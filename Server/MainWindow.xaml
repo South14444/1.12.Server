@@ -1,0 +1,66 @@
+﻿<Window x:Class="Server.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Сервер" Height="600" Width="800">
+    <Grid>
+        
+        <GroupBox Header="Настройки подключения" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Width="300" Height="150">
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Content="IP-адрес:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
+                <TextBox x:Name="IpAddressTextBox" Grid.Row="0" Grid.Column="1" Text="127.0.0.1"/>
+
+                <Label Content="Порт:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
+                <TextBox x:Name="PortTextBox" Grid.Row="1" Grid.Column="1" Text="5000"/>
+
+                <Button x:Name="StartServerButton" Content="Запустить сервер" Grid.Row="2" Grid.ColumnSpan="2" Margin="0,10,0,0" Click="StartServerButton_Click"/>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="Сообщения" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="320,10,10,0" Height="400">
+            <Grid>
+                <TextBox x:Name="MessagesTextBox" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"
+                         TextWrapping="Wrap" IsReadOnly="True" AcceptsReturn="True"/>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="Отправить сообщение" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="10,0,10,10" Height="120">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBox x:Name="SendMessageTextBox" Grid.Column="0" Margin="5"/>
+                <Button x:Name="SendMessageButton" Content="Отправить" Grid.Column="1" Margin="5" Click="SendMessageButton_Click"/>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="Режим работы" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,170,0,0" Width="300" Height="120">
+            <Grid>
+                <ComboBox x:Name="ModeComboBox" Margin="10">
+                    <ComboBoxItem Content="Человек — человек" IsSelected="True"/>
+                    <ComboBoxItem Content="Человек — компьютер"/>
+                    <ComboBoxItem Content="Компьютер — человек"/>
+                    <ComboBoxItem Content="Компьютер — компьютер"/>
+                </ComboBox>
+            </Grid>
+        </GroupBox>
+
+
+        <Label x:Name="StatusLabel" Content="Сервер не запущен" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10"/>
+    </Grid>
+</Window>
+
